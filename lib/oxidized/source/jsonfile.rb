@@ -51,6 +51,9 @@ module Oxidized
           vars = {}
           @cfg.vars_map.each do |key, want_position|
             vars[key.to_sym] = node_var_interpolate string_navigate_object(node, want_position)
+            if (vars[key.to_sym] == nil)
+              vars.delete(key.to_sym)
+            end
           end
           keys[:vars] = vars unless vars.empty?
 
